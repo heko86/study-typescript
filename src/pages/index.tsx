@@ -1,9 +1,21 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+// Intersection Types
+// 複数の型を1つにまとめることができるもの
 
-const inter = Inter({ subsets: ["latin"] });
+type Foo = {
+  a: number;
+  b: string;
+};
+type Bar = {
+  c: boolean;
+};
+
+type FooBar = Foo & Bar;
+
+const Test: FooBar = {
+  a: 1,
+  b: "",
+  c: true,
+};
 
 export default function Home() {
   return <div>test</div>;
