@@ -1,22 +1,19 @@
-// Intersection Types
-// 複数の型を1つにまとめることができるもの
-
-type Foo = {
-  a: number;
-  b: string;
-};
-type Bar = {
-  c: boolean;
-};
-
-type FooBar = Foo & Bar;
-
-const Test: FooBar = {
-  a: 1,
-  b: "",
-  c: true,
-};
+import { TwitterCard } from "@/components/TwitterCard";
+import path from "path";
 
 export default function Home() {
-  return <div>test</div>;
+  return (
+    <TwitterCard
+      user={{ name: "みや", accountName: "miyamiya", image: "" }}
+      analytics={[
+        { path: "", count: 111 },
+        { path: "", count: 222 },
+        { path: "", count: 333 },
+      ]}
+      body={{
+        text: "おはようございます",
+      }}
+      type="tweet"
+    />
+  );
 }
