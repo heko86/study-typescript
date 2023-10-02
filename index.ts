@@ -53,3 +53,42 @@ const bar = <T extends string>(arg: T) => {
   arg.toUpperCase();
   return { value: arg };
 };
+
+// Genericsの型引数が複数あるパターン
+const hoge = <T extends string, K extends number, U extends boolean>(
+  foo: T,
+  bar: K,
+  baz: U
+) => {
+  return {};
+};
+
+// -----
+// GenericsとLookupが合わさったパターン
+const getProperty = <T, K extends keyof T>(obj: T, key: K) => {
+  return obj[key];
+};
+
+const obj = {
+  foo: 1,
+  bar: 2,
+  baz: 3,
+};
+
+const hoge2 = getProperty(obj, "baz");
+
+const setProperty = <T, K extends keyof T>(obj: T, key: K, value: T[K]) => {
+  obj[key] = value;
+};
+
+setProperty(obj, "bar", 100);
+// -----
+
+//Lookupの例
+type Obj = {
+  a: number;
+};
+type Foo2 = Obj["a"];
+
+// Genericsが実際に使われている例
+const foo8 = [1, 2, 3].map((v) => v.toString());
