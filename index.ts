@@ -88,3 +88,20 @@ type Foo12 = Lowercase<"HELLO">;
 type Foo13 = Capitalize<"hello">;
 type Foo14 = Uncapitalize<"Hello">;
 // ーーーーーーー
+//外部パッケージでUtility Tyepsを提供してくれるもの
+// type-fest(インストールして使う）
+// 組み込みではできないこと
+// 例えばPartialは組み込みのオブジェクトには適用されない
+type User2 = {
+  name: string;
+  age: number | null;
+  address: {
+    country: "US" | "UK" | "JP";
+  };
+};
+type PartialUser2 = PartialDeep<User2>;
+const user2: PartialUser2 = {
+  name: "みや",
+  // address:{} 組み込みだとエラーになる
+  address: {},
+};
